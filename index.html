@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banking System</title>
+  <link rel="stylesheet" href="./styles.css">
+
+</head>
+
+<body>
+  <main>
+    <header>
+      <nav>
+        <p class="title-name">Fintech</p>
+        <div class="nav-items">
+          <ul>
+            <li><a href="#deposit-tab">Deposit</a></li>
+            <li><a href="#withdraw-tab">Withdraw</a></li>
+            <li><a href="#transfer-tab">Transfer</a></li>
+            <li><a href="#accounts-tab">Accounts</a></li>
+          </ul>
+        </div>
+        <div class="nav-btns">
+          <button><a href="#create">Create account</a></button>
+        </div>
+      </nav>
+    </header>
+    <section class="hero-section">
+      <div>
+        <p class="hero-title">
+          Meet us for all your banking solutions.
+        </p>
+        <p class="hero-desc">Create an account now </p>
+        <div class="nav-btns">
+          <button><a href="#create">Create account</a></button>
+        </div>
+
+        <div class="hero-extra">
+          <p><span>100</span> transactions completed</p>
+          <p><span>100</span> Cards delivered</p>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="assets/hero.png" alt="hero-img">
+      </div>
+
+    </section>
+    <section id="accounts-tab" class="list-accounts">
+      <p>Registered Accounts: <span id="num-accounts"></span></p>
+      <div>
+        <table id="myTable">
+
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Account Number</th>
+            </tr>
+          </thead>
+          <tbody id="showAccounts">
+
+          </tbody>
+        </table>
+      </div>
+
+    </section>
+    <section class="create-section">
+      <div>
+        <p class="hero-title">
+          Create an account with us 
+        </p>
+      </div>
+      <div id="create" class="create-form">
+        <div class="form-tab">
+          <label for="name">Account Name: </label>
+          <input id="create-name" type="text" placeholder="First name  | Last Name ">
+        </div>
+        <div class="form-tab">
+          <label for="name">Account Number: </label>
+          <input id="create-accountNo" type="text" placeholder="Set a 10 digit account number">
+        </div>
+        <div class="form-tab">
+          <label for="name">Pin: </label>
+          <input class="create-pin" id="create-pin" type="text" placeholder="****">
+        </div>
+
+        <button class="form-btn">Create</button>
+
+        <p id="successMessage"></p>
+
+      </div>
+    </section>
+    <section class="section-functions">
+      <div class="functions-div">
+        <div id="deposit-tab" class="create-form function-form">
+          <p><b>Make a Deposit</b></p>
+          <div class="form-tab">
+            <label for="name">Account Number: </label>
+            <input type="text" placeholder="xxxxxxxx" id="depositAcc">
+          </div>
+          <div class="form-tab">
+            <label for="name">Deposit Amount: </label>
+            <input type="text" placeholder="Amount to be deposited" id="depositAmnt">
+          </div>
+          <div class="form-tab">
+            <label for="name">Pin: </label>
+            <input type="text" placeholder="****" id="accPin">
+          </div>
+
+          <p class="successMessage" id="successMessageD"></p>
+
+          <button class="form-btn func-btn" id="depositBtn">Deposit</button>
+
+        </div>
+        <div id="withdraw-tab" class="create-form function-form">
+          <p><b>Request a Withdrawal</b></p>
+          <div class="form-tab">
+            <label for="name">Account Number: </label>
+            <input id="withdrawAcc" type="text" placeholder="xxxxxxxx">
+          </div>
+          <div class="form-tab">
+            <label for="name">Withdrawal Amount: </label>
+            <input id="withdrawAmnt" type="text" placeholder="Amount to withdraw">
+          </div>
+          <div class="form-tab">
+            <label for="name">Pin: </label>
+            <input id="withdrawPin" type="text" placeholder="****">
+          </div>
+
+          <p class="successMessage" id="successMessageW">sss</p>
+          <button class="form-btn func-btn" id="withdrawBtn">Withdraw</button>
+
+        </div>
+        <div id="transfer-tab" class="create-form function-form">
+          <p><b>Make a Transfer</b></p>
+          <div class="form-tab">
+            <label for="name">Sender Account: </label>
+            <input id="senderAcc" type="text" placeholder="First name  | Last Name ">
+          </div>
+          <div class="form-tab">
+            <label for="name">Receiver Account: </label>
+            <input id="receiverAcc" type="text" placeholder="Set a 10 digit account number">
+          </div>
+          <div class="form-tab">
+            <label for="name">Transfer Amount: </label>
+            <input id="transferAmnt" type="text" placeholder="****">
+          </div>
+          <div class="form-tab">
+            <label for="name">Pin: </label>
+            <input id="transferPin" type="text" placeholder="****">
+          </div>
+
+          <p class="successMessage" id="successMessageT"></p>
+
+          <button id="transferBtn" class="form-btn func-btn">Transfer</button>
+
+        </div>
+      </div>
+    </section>
+  </main>
+  <script defer src="index.js"></script>
+</body>
+
+</html>
