@@ -136,11 +136,10 @@ class BankingSystem  {
 const account1 = new Account("Jack", 2121427797, 1234);
 const account2 = new Account("Bower", 190805505, 1234);
 const account3 = new Account("Black", 303030303, 1234);
-const account4 = new Account("Peace", 180805024, 1234)
 // const newArr = [account1, account2, account3, account4];
 // console.log(newArr);
 
-const bank = new BankingSystem([account1, account2, account3, account4]);
+const bank = new BankingSystem([account1, account2, account3]);
 
 const showAccount = document.getElementById("showAccounts") as HTMLTableElement // table body
 const numberOfAccounts = document.getElementById("num-accounts")
