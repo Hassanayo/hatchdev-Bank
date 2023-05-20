@@ -152,7 +152,7 @@ const bank = new BankingSystem([account1, account2, account3]);
 const showAccount = document.getElementById("showAccounts") as HTMLTableElement // table body
 const numberOfAccounts = document.getElementById("num-accounts")
 
-numberOfAccounts.innerHTML = bank.AccountList.length.toString()
+// numberOfAccounts.innerHTML = bank.AccountList.length.toString() 
 function renderAccounts(){
   bank.AccountList.forEach(acc => {
     // create an element 
@@ -187,6 +187,9 @@ createBtn.addEventListener("click", function(){
     showAccount.innerHTML += (div)
     successMessage.innerText = "Succesful"
   }
+  numberOfAccounts.innerHTML = bank.AccountList.length.toString()
+  console.log();
+  
 })
 
 // deposit
