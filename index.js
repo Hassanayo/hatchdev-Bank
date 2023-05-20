@@ -169,7 +169,7 @@ var account3 = new Account("Samson Ark", 303030303, 1234);
 var bank = new BankingSystem([account1, account2, account3]);
 var showAccount = document.getElementById("showAccounts"); // table body
 var numberOfAccounts = document.getElementById("num-accounts");
-// numberOfAccounts.innerHTML = bank.AccountList.length.toString() 
+numberOfAccounts.innerHTML = bank.AccountList.length.toString();
 function renderAccounts() {
     bank.AccountList.forEach(function (acc) {
         // create an element 
