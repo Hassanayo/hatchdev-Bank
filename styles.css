@@ -232,6 +232,25 @@ th {
   text-align: center;
 }
 
+
+
+.balance-section{
+  background-color: var(--blackText);
+  color: white;
+  padding: 10px 0;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+}
+.balance-info{
+  font-size: 140%;
+  width: 50%;
+  text-align: center;
+}
+.balance-form{
+  height: 300px;
+}
+
 @media screen and (max-width: 980px) {
   nav{
     padding: 0 10px;
@@ -274,6 +293,9 @@ th {
     width: 100%;
   }
   .functions-div{
+    flex-direction: column;
+  }
+  .balance-section{
     flex-direction: column;
   }
 }

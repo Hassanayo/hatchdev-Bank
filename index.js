@@ -89,6 +89,13 @@ var BankingSystem = /** @class */ (function () {
             console.log("Error: account does not exist.");
         }
     };
+    BankingSystem.prototype.checkAccount = function (accountNumber, pin) {
+        var matchingAccounts = this.accounts.filter(function (account) { return account.getAccountNumber === accountNumber; });
+        var account = matchingAccounts[0];
+        if (account.checkPin(pin)) {
+            return true;
+        }
+    };
     BankingSystem.prototype.withdraw = function (accountNumber, amount, pin) {
         var matchingAccounts = this.accounts.filter(function (account) { return account.getAccountNumber === accountNumber; });
         if (matchingAccounts.length > 0) {
@@ -112,12 +119,13 @@ var BankingSystem = /** @class */ (function () {
             console.log("Error: account does not exist.");
         }
     };
-    BankingSystem.prototype.getBalance = function (accountNumber) {
+    BankingSystem.prototype.checkBalance = function (accountNumber) {
         var matchingAccounts = this.accounts.filter(function (account) { return account.getAccountNumber === accountNumber; });
         if (matchingAccounts.length > 0) {
             var account = matchingAccounts[0];
             var balance = account.getBalance;
             console.log("Balance for account ".concat(accountNumber, ": ").concat(balance));
+            return balance;
         }
         else {
             console.log("Error: account does not exist.");
@@ -153,9 +161,9 @@ var BankingSystem = /** @class */ (function () {
     BankingSystem.BankName = "Nithub Bank";
     return BankingSystem;
 }());
-var account1 = new Account("Jack", 2121427797, 1234);
-var account2 = new Account("Bower", 190805505, 1234);
-var account3 = new Account("Black", 303030303, 1234);
+var account1 = new Account("Hassan Ayomide", 2121427797, 1234);
+var account2 = new Account("Mark James", 190805505, 1234);
+var account3 = new Account("Samson Ark", 303030303, 1234);
 // const newArr = [account1, account2, account3, account4];
 // console.log(newArr);
 var bank = new BankingSystem([account1, account2, account3]);
@@ -197,7 +205,7 @@ depositButton.addEventListener("click", function () {
         var amount = parseInt(depositAmount.value);
         var pin = parseInt(depositPin.value);
         bank.deposit(accountNumber, amount, pin);
-        bank.getBalance(accountNumber);
+        bank.checkBalance(accountNumber);
         successMessageD.innerText = "Succesful";
     }
 });
@@ -213,7 +221,7 @@ withdrawButton.addEventListener("click", function () {
         var amount = parseInt(withdrawAmount.value);
         var pin = parseInt(withdrawPin.value);
         bank.withdraw(accountNumber, amount, pin);
-        bank.getBalance(accountNumber);
+        bank.checkBalance(accountNumber);
         successMessageW.innerText = "Succesful";
     }
 });
@@ -231,11 +239,23 @@ transferButton.addEventListener("click", function () {
         var amount = parseInt(transferAmount.value);
         var pin = parseInt(transferPin.value);
         bank.transfer(sourceAccount, targetAccount, amount, pin);
-        bank.getBalance(sourceAccount);
-        bank.getBalance(targetAccount);
+        bank.checkBalance(sourceAccount);
+        bank.checkBalance(targetAccount);
         setTimeout(function (h) {
             successMessageT.innerText = "Succesful";
         }, 1000);
         successMessageT.innerText = "";
+    }
+});
+/// balance
+var balanceAccount = document.getElementById("balanceAcc");
+var balancePin = document.getElementById("balancePin");
+var balanceButton = document.getElementById("balanceBtn");
+var balanceInfo = document.getElementById("balanceInfo");
+balanceButton.addEventListener("click", function () {
+    if (balanceAccount.value && balancePin.value) {
+        if (bank.checkAccount(parseInt(balanceAccount.value), parseInt(balancePin.value))) {
+            balanceInfo.innerText = "Your balance is ".concat(bank.checkBalance(parseInt(balanceAccount.value)));
+        }
     }
 });

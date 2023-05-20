@@ -74,6 +74,13 @@ class BankingSystem  {
       console.log("Error: account does not exist.");
     }
   }
+  checkAccount(accountNumber: number, pin: number){
+    const matchingAccounts = this.accounts.filter((account) => account.getAccountNumber === accountNumber);
+    const account = matchingAccounts[0];
+    if(account.checkPin(pin)){
+      return true
+    } 
+  }
   
   withdraw(accountNumber: number, amount: number, pin: number ) {
     const matchingAccounts = this.accounts.filter((account) => account.getAccountNumber === accountNumber);
@@ -96,12 +103,13 @@ class BankingSystem  {
     }
   }
 
-  getBalance(accountNumber: number) {
+  checkBalance(accountNumber: number) {
     const matchingAccounts = this.accounts.filter((account) => account.getAccountNumber === accountNumber);
     if (matchingAccounts.length > 0) {
       const account = matchingAccounts[0];
       const balance = account.getBalance;
       console.log(`Balance for account ${accountNumber}: ${balance}`);
+      return balance
     } else {
       console.log("Error: account does not exist.");
     }
@@ -133,9 +141,9 @@ class BankingSystem  {
   }
 }
 
-const account1 = new Account("Jack", 2121427797, 1234);
-const account2 = new Account("Bower", 190805505, 1234);
-const account3 = new Account("Black", 303030303, 1234);
+const account1 = new Account("Hassan Ayomide", 2121427797, 1234);
+const account2 = new Account("Mark James", 190805505, 1234);
+const account3 = new Account("Samson Ark", 303030303, 1234);
 // const newArr = [account1, account2, account3, account4];
 // console.log(newArr);
 
@@ -194,7 +202,7 @@ depositButton.addEventListener("click", ()=>{
     const amount = parseInt(depositAmount.value)
     const pin = parseInt(depositPin.value)
     bank.deposit(accountNumber, amount, pin)
-    bank.getBalance(accountNumber)
+    bank.checkBalance(accountNumber)
     successMessageD.innerText = "Succesful"
   }
 })
@@ -212,7 +220,7 @@ withdrawButton.addEventListener("click", ()=>{
     const amount = parseInt(withdrawAmount.value)
     const pin = parseInt(withdrawPin.value)
     bank.withdraw(accountNumber, amount, pin)
-    bank.getBalance(accountNumber)
+    bank.checkBalance(accountNumber)
     successMessageW.innerText = "Succesful"
   }
 })
@@ -232,13 +240,29 @@ transferButton.addEventListener("click", ()=>{
     const amount = parseInt(transferAmount.value)
     const pin = parseInt(transferPin.value)
     bank.transfer(sourceAccount, targetAccount,amount,pin)
-    bank.getBalance(sourceAccount)
-    bank.getBalance(targetAccount)
+    bank.checkBalance(sourceAccount)
+    bank.checkBalance(targetAccount)
     
     setTimeout((h) => {
       successMessageT.innerText = "Succesful"
     }, 1000)
     successMessageT.innerText = ""
+    
+  }
+})
+
+/// balance
+const balanceAccount = document.getElementById("balanceAcc") as HTMLInputElement
+const balancePin = document.getElementById("balancePin") as HTMLInputElement
+const balanceButton = document.getElementById("balanceBtn") as HTMLButtonElement
+const balanceInfo = document.getElementById("balanceInfo")
+
+balanceButton.addEventListener("click", () => {
+  if(balanceAccount.value && balancePin.value){
+    if(bank.checkAccount(parseInt(balanceAccount.value), parseInt(balancePin.value))){
+      balanceInfo.innerText = `Your balance is ${bank.checkBalance(parseInt(balanceAccount.value))}`
+
+    }
     
   }
 })

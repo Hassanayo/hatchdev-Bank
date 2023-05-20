@@ -92,6 +92,27 @@
 
       </div>
     </section>
+    <section class="balance-section">
+      <div id="balance-tab" class="create-form balance-form">
+        <p><b>Check Account Balance</b></p>
+        <div class="form-tab">
+          <label for="name">Account Number: </label>
+          <input type="text" placeholder="xxxxxxxx" id="balanceAcc">
+        </div>
+        <div class="form-tab">
+          <label for="name">Pin: </label>
+          <input type="password" placeholder="****" id="balancePin">
+        </div>
+
+        <!-- <p class="successMessage" id="successMessageD"></p> -->
+
+        <button class="form-btn func-btn" id="balanceBtn">Deposit</button>
+
+      </div>
+      <div class="balance-info">
+        <p id="balanceInfo"></p>
+      </div>
+    </section>
     <section class="section-functions">
       <div class="functions-div">
         <div id="deposit-tab" class="create-form function-form">
@@ -129,7 +150,7 @@
             <input id="withdrawPin" type="text" placeholder="****">
           </div>
 
-          <p class="successMessage" id="successMessageW">sss</p>
+          <p class="successMessage" id="successMessageW"></p>
           <button class="form-btn func-btn" id="withdrawBtn">Withdraw</button>
 
         </div>
